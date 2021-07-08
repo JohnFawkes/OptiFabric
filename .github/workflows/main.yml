@@ -27,10 +27,13 @@ jobs:
           name: Optifabric-Artifact
           path: build/libs/optifabric-*.*.jar
           if-no-files-found: error
-      - name: Github Release
-        uses: elgohr/Github-Release-Action@v3.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      - name: Upload files to a GitHub release
+        uses: svenstaro/upload-release-action@2.2.1
         with:
-          args: OptiFabric-1.17.1
-
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/libs/optifabric-*.*.jar
+          asset_name: mything
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is my release text"
+        
