@@ -27,3 +27,6 @@ jobs:
           name: Optifabric-Artifact
           path: build/libs/optifabric-*.*.jar
           if-no-files-found: error
+      - name: Github Release
+        uses: elgohr/Github-Release-Action@v3.1
+
